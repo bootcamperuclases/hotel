@@ -10,7 +10,13 @@ def get_rooms():
 
     db = SessionLocal()
 
-    rooms = db.query(Room).all()
+    try:
+        rooms = db.query(Room).all()
+        return rooms
+
+    finally:
+        db.close()
+
 
     return rooms
     
